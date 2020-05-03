@@ -1,6 +1,10 @@
 from . import main
-from flask import render_template
+from flask import render_template,request,redirect,url_for, abort
 from ..models import Pitch, Comment, User, Upvote, Downvote
+from flask_login import login_required,current_user
+from .. import db, photos
+from .forms import PitchForm,UpdateProfile, CommentForm
+
 @main.route('/')
 def index():
 
