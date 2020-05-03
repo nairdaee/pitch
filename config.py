@@ -26,6 +26,9 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
+    def init_app(app):
+        pass
+
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://nairdaee:mutemuas2001@localhost/pitch'
     DEBUG = True
 
