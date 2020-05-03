@@ -1,6 +1,6 @@
 from . import db
 from datetime import datetime
-
+from werkzeug.security import generate_password_hash,check_password_hash
 class Pitch(db.Model):
 
     __tablename__ = 'pitches'
@@ -58,6 +58,18 @@ class User(db.Model):
     upvotes = db.relationship('Upvote', backref='user', lazy='dynamic')
     downvotes = db.relationship('Downvote', backref='user', lazy='dynamic')
     
+    @property
+    def password(self):
+        raise AttributeError('You cannnot read the password attribute')
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+
+    def verify_password(self,password):
+        return check_password_hash(self.password_hash,password)
+
     def __repr__(self):
         return f'User {self.username}'
 
