@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<body class="body"
+    style="background-size:cover;background-repeat: no-repeat ;background-image:url(https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNw97w_M_iAhWs4YUKHZ6YBTkQjRx6BAgBEAU&url=https%3A%2F%2Fthemes.shopify.com%2Fthemes%2Flabel%2Fstyles%2Frecord&psig=AOvVaw34iC5ILGYtHbdRIWhDXgf1&ust=1559742679982580)">
+    <div class="container" style="background-color: aqua-gradient;">
+        <div class="row">
+            {% for pitch in pitches %}
+            <div class="col-md-6">
+                <div class="card card-cascade">
+                    <div class="view view-cascade gradient-card-header blue-gradient">
+                        <div class="title text-center">
+                            <h2 class="card-header-title mb-3">{{pitch.title}}</h2>
+                        </div>
+                        <p class="card-header-subtitle mb-0">Category: {{pitch.category}}</p>
+
+                    </div>
+                    <div class="card-body card-body-cascade text-center">
+                        <h4 class=" mb-2 ">{{pitch.description}}</h4>
+                        <p class="text-right">Posted by :{{pitch.user.username}}</p>
+
+                        <hr>
+
+                        <div class=""><a href="{{url_for('main.new_comment',pitch_id = pitch.id)}}"> Add a comment/View
+                                comments</a>
+                        </div>
+
+                    </div>
+                    <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
+                        <ul class="list-unstyled list-inline font-small">
+                            <li class="list-inline-item pr-2 white-text"><i
+                                    class="far fa-clock pr-1"></i>{{pitch.posted_p}}</li>
+                            <li class="list-inline-item pr-2">
+                                <a class="white-text" href="{{url_for('main.upvote',pitch_id = pitch.id)}}"><i
+                                        class="far fa-thumbs-up"></i> Upvote {{pitch.upvotes.count()}} </a></li>
+                            <li class="list-inline-item pr-2 "><a class="white-text"
+                                    href="{{url_for('main.downvote',pitch_id = pitch.id)}}"><i
+                                        class="far fa-thumbs-down"></i> Downvote
+                                    {{pitch.downvotes.count()}}</a></li>
+                            <input type=hidden value="{{ next or '' }}" name=next>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+            </div>
+
+
+            {% endfor %}
+        </div>
+    </div>
+</body>
