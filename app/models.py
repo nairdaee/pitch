@@ -1,6 +1,13 @@
 from . import db
-from datetime import datetime
 from werkzeug.security import generate_password_hash,check_password_hash
+from flask_login import UserMixin
+from . import login_manager
+from datetime import datetime
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 class Pitch(db.Model):
 
     __tablename__ = 'pitches'
@@ -45,10 +52,13 @@ class Comment(db.Model):
         comments = Comments.query.filter_by(pitch_id=id).all()
         return comments
 
-class User(db.Model):
+
+
+class User(UserMixin,db.Model):
     __tablename__ = 'users'
+
     id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255))
+    username = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255),unique = True,index = True)
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
@@ -57,7 +67,7 @@ class User(db.Model):
     comment = db.relationship('Comment', backref='user', lazy='dynamic')
     upvotes = db.relationship('Upvote', backref='user', lazy='dynamic')
     downvotes = db.relationship('Downvote', backref='user', lazy='dynamic')
-    
+
     @property
     def password(self):
         raise AttributeError('You cannnot read the password attribute')
