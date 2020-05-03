@@ -25,6 +25,25 @@ class Pitch(db.Model):
     def get_pitches(cls,id):
         pitches = Pitch.query.order_by(pitch_id=id).desc().all()
         return pitches
+
+class Comment(db.Model):
+
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer,primary_key = True)
+    comment = db.Column(db.String)
+    posted_c = db.Column(db.DateTime,default=datetime.utcnow)
+    pitch_id = db.Column(db.Integer, db.ForeignKey("pitches.id"), nullable=False)
+    user_c = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls,id):
+        comments = Comments.query.filter_by(pitch_id=id).all()
+        return comments
         
 class User(db.Model):
     __tablename__ = 'users'
