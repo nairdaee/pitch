@@ -1,6 +1,6 @@
 from . import main
 from flask import render_template
-
+from ..models import Pitch, Comment, User, Upvote, Downvote
 @main.route('/')
 def index():
 
