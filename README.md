@@ -17,8 +17,7 @@ This is an application that allows users to use one minute wisely. The users wil
 
 ### Setup
  - Clone/download the Repository
-    - Edit the start.sh file with your api key from the news.org website
-    - Install `python 3.7`
+    - Edit the start.sh file if necessary depending on python version.
     - Run `chmod a+x start.py`
     - Run `./start.py`
 
