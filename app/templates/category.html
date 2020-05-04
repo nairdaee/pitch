@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf %}
-
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+{% endblock %}
 {% block content %}
 
 <div class="body"
@@ -50,7 +53,7 @@
             {% endfor %}
         </div>
 
-        <a href="/pitch/new"> Add a new pitch</a>
+        <a  class= "linkstyle" href="/pitch/new">Add a new pitch</a>
         {% endblock %}
     </div>
 </div>
