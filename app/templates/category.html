@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
 
-<body class="body"
+<div class="body"
     style="background-size:cover;background-repeat: no-repeat ;background-image:url(https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNw97w_M_iAhWs4YUKHZ6YBTkQjRx6BAgBEAU&url=https%3A%2F%2Fthemes.shopify.com%2Fthemes%2Flabel%2Fstyles%2Frecord&psig=AOvVaw34iC5ILGYtHbdRIWhDXgf1&ust=1559742679982580)">
     <div class="container" style="background-color: aqua-gradient;">
         <div class="row">
@@ -49,5 +49,11 @@
 
             {% endfor %}
         </div>
+
+        <a href="/pitch/new"> Add a new pitch</a>
+        {% endblock %}
     </div>
-</body>
+</div>
+
+
+(% endblock %)
