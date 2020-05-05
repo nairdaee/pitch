@@ -28,10 +28,8 @@ keyrings.alt==3.1.1
 MarkupSafe==1.1.1
 pathlib2==2.3.5
 psycopg2==2.8.5
-pycrypto==2.6.1
 PyGObject==3.34.0
 pyperclip==1.6.4
-pyxdg==0.25
 requests==2.23.0
 scandir==1.10.0
 SecretStorage==2.3.1
