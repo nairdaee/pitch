@@ -9,11 +9,11 @@
         <h3>Comments for {{pitch.title}}</h3>
     </div>
     {% if comments %}
-    <div class="row text-center">
+    <div class="row text-center" >
         {% for comment in comments %}
         <div class="col-md-4">
 
-            <div class="card">
+            <div class="card" style= "background-color: rgb(201, 197, 197);">
                 <div class="card-body">
                     <h4 class="card-title"><a style="color: rgb(151, 22, 22)">{{ comment.comment}}</a></h4>
                     <p class="text-right">Posted by: {{comment.user.username}}</p>
@@ -28,6 +28,8 @@
 
     <h3>No comments</h3>
     {%endif%}
+
+    <a href="/" style="background-color: rgb(10, 110, 110) ; color:white;font-size: 20pt; border-radius:35px; padding: 5px;" >BACK TO CATEGORIES</a>
 </div>
 
 
